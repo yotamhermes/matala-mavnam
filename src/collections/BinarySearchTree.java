@@ -75,7 +75,6 @@ public class BinarySearchTree {
 	    	}
 	    	
 	    	// Two children
-	    	
 	    	int smallestValue = findMinValue(current.right);
 	    	current.value = smallestValue;
 	    	current.right = remove(current.right, smallestValue);
