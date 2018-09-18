@@ -1,19 +1,20 @@
 package collections;
 
-class Node {
 
-	public int value;
-	public Node left;
-	public Node right;
 
-	public Node(int value) {
-		this.value = value;
-		this.left = null;
-		this.right = null;
+public class BinarySearchTree implements ICollection {
+	class Node {
+		public int value;
+		public Node left;
+		public Node right;
+
+		public Node(int value) {
+			this.value = value;
+			this.left = null;
+			this.right = null;
+		}
 	}
-}
-
-public class BinarySearchTree {
+	
 	private Node root;
 
 	public BinarySearchTree() {

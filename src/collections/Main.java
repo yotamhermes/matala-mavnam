@@ -5,9 +5,13 @@ import java.util.Random;
 public class Main {
 
 	public static void main(String[] args) {
-		IPriorityQueue priorityTree = new PriorityQueueBST();
+		ICollection tree = new BinarySearchTree();
+		IPriorityQueue priorityBTS = new PriorityQueue(tree);
 		
-		check(priorityTree);
+		ICollection linkedList = new BinarySearchTree();
+		IPriorityQueue priorityLL = new PriorityQueue(linkedList);
+		
+		check(priorityLL);
 	}
 
 	public static void check(IPriorityQueue queue) {
