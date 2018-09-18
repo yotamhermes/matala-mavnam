@@ -1,14 +1,15 @@
 package collections;
 
-import collections.BinarySearchTree.Node;
-
-public class LinkedList implements ICollection {
-	class Node {
+public class LinkedList implements ICollection
+{
+	class Node
+	{
 		public int value;
 		public Node next;
 		public Node prev;
 
-		public Node(int value) {
+		public Node(int value)
+		{
 			this.value = value;
 			this.next = null;
 			this.prev = null;
@@ -18,38 +19,68 @@ public class LinkedList implements ICollection {
 	public Node head;
 
 	@Override
-	public void insert(int value) {
-		head = insert(head, value);
-	}
+	public void insert(int value)
+	{
+		Node newNode = new Node(value);
 
-	@Override
-	public void remove(int value) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int findMaxValue() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	private Node insert(Node current, int value) {
-		if (current == null) {
-			return new Node(value);
+		if (head != null)
+		{
+			newNode.next = head;
+			head.prev = newNode;
 		}
-		
-		Node newNode = insert(current, value);
-		
-		newNode.prev = current;
-		current.next = newNode;
-		
-		return current;
+
+		this.head = newNode;
+	}
+
+	@Override
+	public void remove(int value)
+	{
+		Node current = head;
+
+		while (current != null && current.value != value)
+		{
+			current = current.next;
+		}
+
+		if (current == null)
+		{
+			return;
+		}
+
+		if (current.prev != null)
+		{
+			current.prev.next = current.next;
+		}
+		else
+		{
+			head = current.next;
+		}
+
+		if (current.next != null)
+		{
+			current.next.prev = current.prev;
+		}
+	}
+
+	@Override
+	public int findMaxValue()
+	{
+		int max = head.value;
+		Node current = head.next;
+
+		while (current != null)
+		{
+			max = current.value > max ? current.value : max;
+			
+			current = current.next;
+		}
+
+		return max;
+	}
+
+	@Override
+	public boolean isEmpty()
+	{
+		return head == null;
 	}
 }
